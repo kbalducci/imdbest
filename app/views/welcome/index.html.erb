@@ -6,14 +6,13 @@
     <% end %>
     </div>
 <h3> Posts </h3>
-    <% @posts.each do |post| %>
+    <% @user.posts.each do |post| %>
 
-            <p class="posts-main"><%= post.movie_title %></p>
-            <p class="posts-main"><%= post.url %></p>
-            <p class="posts-main"><%= post.descrition %></p>
-            <p class="posts-main"><%= post.movie_title %></p>
+            <p class="posts-main">Title: <%= post.movie_title %></p>
+            <p class="posts-main">Watch Clip: <%= link_to(post.url) %></p>
+            <p class="posts-main">Description<%= post.descrition %></p>
             <p><%= image_tag post.poster_image.url(:medium) %></p>
-            <p class="time-stamp"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Created <%= time_ago_in_words(post.created_at) %> ago by: <span class="prof"><%= post.user.user_name%></span></p>
+            <p class="time-stamp"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Created <%= time_ago_in_words(post.created_at) %> ago by: <span class="prof"><%= link_to post.user.email, user_path(@user)%></span></p>
 
 
 
