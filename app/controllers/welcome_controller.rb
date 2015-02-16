@@ -13,20 +13,20 @@ protect_from_forgery with: :exception
     @post = Post.new
   end
 
-  def post_post
-    @post = Post.new(post_params)
-    user = User.find(params[:user_id])
-    @post.user_id = user.id
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to root_path, notice: 'Post was successfully created.' }
-        format.json { render json: @post.as_json, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def post_post
+  #   @post = Post.new(post_params)
+  #   user = User.find(params[:user_id])
+  #   @post.user_id = user.id
+  #   respond_to do |format|
+  #     if @post.save
+  #       format.html { redirect_to root_path, notice: 'Post was successfully created.' }
+  #       format.json { render json: @post.as_json, status: :created, location: @post }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @post.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   def create
     @user = User.new(user_params)
@@ -56,7 +56,7 @@ protect_from_forgery with: :exception
     end
 
     def post_params
-      params.require(:user).permit(:user_id, :movie_title, :url, :descrition)
+      params.require(:user).permit(:user_id, :movie_title, :url, :descrition, :poster_image)
     end
 
 

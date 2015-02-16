@@ -6,3 +6,16 @@
     <% end %>
     </div>
 <h3> Posts </h3>
+    <% @posts.each do |post| %>
+
+            <p class="posts-main"><%= post.movie_title %></p>
+            <p class="posts-main"><%= post.url %></p>
+            <p class="posts-main"><%= post.descrition %></p>
+            <p class="posts-main"><%= post.movie_title %></p>
+            <p><%= image_tag post.poster_image.url(:medium) %></p>
+            <p class="time-stamp"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Created <%= time_ago_in_words(post.created_at) %> ago by: <span class="prof"><%= post.user.user_name%></span></p>
+
+
+
+      <% end %>
+    </div>

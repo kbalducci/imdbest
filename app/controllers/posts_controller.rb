@@ -25,7 +25,7 @@ class PostsController < ApplicationController
     user = User.find(params[:user_id])
     @post.user_id = user.id
     respond_to do |format|
-      if @post.save!
+      if @post.save
         format.html { redirect_to root_path, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
 
@@ -55,7 +55,7 @@ class PostsController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:movie_title, :url, :descrition, :user_id)
+      params.require(:post).permit(:movie_title, :url, :descrition, :poster_image, :user_id)
     end
 end
 

@@ -1,4 +1,4 @@
-<%= simple_form_for([@user, @new_chat]) do |f| %>
+<%= simple_form_for([@user, @new_chat], multipart: true) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
