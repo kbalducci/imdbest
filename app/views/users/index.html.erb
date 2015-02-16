@@ -1,0 +1,27 @@
+<div class="stripe">
+
+
+<h1 class="title">Chatter Users</h1>
+</div>
+
+<div class='container'>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th colspan="8"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <div id='users-container'>
+      <tr>
+        <% @users.each do |user| %>
+          <td><span class="glyphicon glyphicon-user" aria-hidden="true"></span><p class="prof-name"> <%= link_to user.user_name, user_path(user) %><%=  %> </p></td>
+      </tr>
+        <% end %>
+    </div>
+  </tbody>
+  </table>
+  </div>
+
+

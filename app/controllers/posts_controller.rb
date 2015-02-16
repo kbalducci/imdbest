@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
    before_action :set_post, only: [:show, :edit, :update, :destroy]
+   # before_action :authenticate_user!
 
   def index
     @user = User.first
@@ -10,13 +11,22 @@ class PostsController < ApplicationController
     set_new_post
   end
 
+  def show
+  end
+
+  def edit
+  end
+
+  def delete
+  end
+
   def create
     @post = Post.new(post_params)
     user = User.find(params[:user_id])
     @post.user_id = user.id
     respond_to do |format|
-      if @post.save
-        format.html { redirect_to root_path, notice: 'Chat was successfully created.' }
+      if @post.save!
+        format.html { redirect_to root_path, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
 
       else
@@ -26,13 +36,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def show
-  end
 
-  def edit
-  end
-
-  def delete
+  def destroy
+    @post.destroy(post_params)
   end
 
   private
@@ -48,8 +54,8 @@ class PostsController < ApplicationController
       @new_post = Post.new
     end
     # Never trust parameters from the scary internet, only allow the white list through.
-    def chat_params
-      params.require(:post).permit(:movie_title, :url, :description, :user_id)
+    def post_params
+      params.require(:post).permit(:movie_title, :url, :descrition, :user_id)
     end
 end
-end
+
